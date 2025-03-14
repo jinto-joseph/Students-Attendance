@@ -9,6 +9,7 @@ A simple web application to manage student check-ins, built with HTML, CSS, and 
 - ✅ **List students** with their photos and names.
 - 🔲 **Check-in students** easily with checkboxes.
 - 📱 **Installable as a PWA** for a mobile-friendly experience.
+- 🔒 **Password-protected access** to enhance security.
 - ⚡ **Lightweight and fast** for quick check-ins.
 
 ---
@@ -32,6 +33,13 @@ python -m http.server 8000
 
 ### 4️⃣ Open in your browser
 Visit: [http://localhost:8000](http://localhost:8000)
+
+---
+
+## 🔒 Password Protection
+When you open the application, it will prompt you for a password before allowing access. 
+- Default password: `secure123` (You can change this in `index.html`).
+- If the wrong password is entered, access is denied, and users are redirected.
 
 ---
 
