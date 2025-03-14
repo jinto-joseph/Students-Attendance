@@ -1,4 +1,4 @@
-# 📚 Students App
+# 📚 Students Attendance
 
 A simple web application to manage student check-ins, built with HTML, CSS, and JavaScript. This app allows users to list students with photos and names, check them in using checkboxes, and even install the app as a Progressive Web App (PWA) on mobile devices.
 
