@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <h1>Students</h1>
+        <div class="student-list" id="studentList">
+            <div class="student">
+                <img src="Pics/URK24CS1207.jpeg" alt="Rohith" class="student-photo">
+                <label>Rohith Zacharias</label>
+                <input type="checkbox" class="checkin" data-name="Rohith Zacharias">
+            </div>
+            <div class="student">
+                <img src="Pics/URK24CS1208.jpg" alt="Rounak" class="student-photo">
+                <label>Rounak Raj Kashyap</label>
+                <input type="checkbox" class="checkin" data-name="Rounak Raj Kashyap">
+            </div>
+            <div class="student">
+                <img src="Pics/URK24CS1209.JPG" alt="Franklin" class="student-photo">
+                <label>Franklin Rhenius A S</label>
+                <input type="checkbox" class="checkin" data-name="Franklin Rhenius A S">
+            </div>
+            <div class="student">
+                <img src="Pics/URK24CS1210.jpeg" alt="Jinto" class="student-photo">
+                <label>Jinto Joseph</label>
+                <input type="checkbox" class="checkin" data-name="Jinto Joseph">
+            </div>
+            <!-- Add more students below -->
+            <div class="student">
+                <img src="Pics/URK24CS1211.jpg" alt="Harnith" class="student-photo">
+                <label>Harnith M V</label>
+                <input type="checkbox" class="checkin" data-name="Harnith M V">
+            </div>
+            <div class="student">
+                <img src="Pics/URK24CS1212.jpg" alt="Dharnish" class="student-photo">
+                <label>Dharnish R</label>
+                <input type="checkbox" class="checkin" data-name="Dharnish R">
+            </div>
+            <div class="student">
+                <img src="Pics/URK24CS1213.jpg" alt="Ruthwik" class="student-photo">
+                <label>Gudiputi Ruthwik</label>
+                <input type="checkbox" class="checkin" data-name="Gudiputi Ruthwik">
+            </div>
+            <!-- Continue for all 28 students if needed -->
+        </div>
+        <button onclick="submitCheckin()">Submit</button>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker registered:', reg))
+                    .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
+    </script>
+</body>
+</html>

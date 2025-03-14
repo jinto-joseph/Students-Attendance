@@ -1,0 +1,132 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 900px;
+}
+
+/* Header Styling */
+.card-header {
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Student Card Styling */
+.student-card {
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(5px);
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Student Photo Styling */
+.student-photo {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.student-photo:hover {
+    transform: scale(1.2);
+}
+
+/* Checkbox Styling */
+.custom-checkbox .form-check-input {
+    width: 1.8em;
+    height: 1.8em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 6px;
+}
+
+.custom-checkbox .form-check-input:checked {
+    background-color: #28a745;
+    border-color: #28a745;
+    transform: scale(1.1);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+}
+
+.custom-checkbox .form-check-input:focus {
+    box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+}
+
+.custom-checkbox .form-check-label {
+    width: 1.8em;
+    height: 1.8em;
+    cursor: pointer;
+}
+
+/* Submit Button Styling */
+.submit-btn {
+    background: linear-gradient(135deg, #007bff, #00d4ff);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+/* Theme-specific Adjustments */
+[data-bs-theme="dark"] body {
+    background-color: #212529;
+}
+
+[data-bs-theme="dark"] .card-header {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+[data-bs-theme="dark"] .student-card {
+    background: rgba(33, 37, 41, 0.9);
+    color: #e9ecef;
+}
+
+[data-bs-theme="dark"] .custom-checkbox .form-check-input {
+    background-color: #343a40;
+    border-color: #495057;
+}
+
+[data-bs-theme="dark"] .custom-checkbox .form-check-input:checked {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+[data-bs-theme="dark"] .submit-btn {
+    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+[data-bs-theme="dark"] .submit-btn:hover {
+    box-shadow: 0 6px 12px rgba(59, 130, 246, 0.3);
+}
+
+/* Print Styles */
+@media print {
+    .card, .card-header, .btn {
+        border: none !important;
+        box-shadow: none !important;
+    }
+    .card-header {
+        background: none !important;
+        color: #000 !important;
+    }
+    .container {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    #themeToggle {
+        display: none !important;
+    }
+}

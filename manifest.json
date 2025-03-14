@@ -1,0 +1,16 @@
+{
+    "name": "Students",
+    "short_name": "Students",
+    "description": "A simple student check-in app",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#f0f2f5",
+    "theme_color": "#007bff",
+    "icons": [
+        {
+            "src": "Pics/icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
