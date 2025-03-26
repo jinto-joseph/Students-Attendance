@@ -12,7 +12,7 @@ h1, h2 {
 
 .card {
     border-radius: 15px;
-    overflow: visible; /* Changed from hidden to visible to allow zoom-out */
+    overflow: visible;
 }
 
 .card-header {
@@ -23,21 +23,22 @@ h1, h2 {
 .student-card {
     transition: transform 0.2s ease, box-shadow 0.3s ease;
     position: relative;
-    overflow: visible; /* Allow content to overflow */
+    overflow: visible;
 }
 
 .student-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    z-index: 10; /* Higher z-index to ensure zoomed photo appears above other cards */
+    z-index: 10;
 }
 
-/* Enhanced Photo Zoom Effect - Zoom Outside Container */
+/* Enhanced Photo Zoom Effect - Perfect Circle */
 .student-photo {
     width: 50px;
     height: 50px;
     object-fit: cover;
     border: 2px solid #007bff;
+    border-radius: 50%;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     transform-origin: left center;
     will-change: transform;
@@ -46,11 +47,12 @@ h1, h2 {
 }
 
 .student-card:hover .student-photo {
-    transform: scale(3); /* Increased zoom level */
+    transform: scale(3);
     border-color: #0056b3;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 20; /* Higher than card z-index */
-    margin-right: 60px; /* Push other content to make space */
+    z-index: 20;
+    margin-right: 60px;
+    border-radius: 50%; /* Ensures perfect circle when zoomed */
 }
 
 /* Adjust text and checkbox positioning */
@@ -66,14 +68,14 @@ h1, h2 {
     margin-left: 10px;
     z-index: 2;
     position: relative;
-    min-width: 0; /* Allow text truncation if needed */
+    min-width: 0;
 }
 
 /* Prevent checkbox from being overlapped */
 .form-check.custom-checkbox {
     z-index: 3;
     position: relative;
-    margin-left: auto; /* Push to the right */
+    margin-left: auto;
 }
 
 /* Dark Theme Adjustments */
@@ -107,7 +109,7 @@ h1, h2 {
     border-color: #1557b0;
 }
 
-/* Rest of your existing styles remain unchanged */
+/* Submit Button */
 .submit-btn {
     background-color: #007bff;
     border: none;
@@ -120,6 +122,7 @@ h1, h2 {
     background-color: #0056b3;
 }
 
+/* Password Overlay */
 .password-overlay {
     position: fixed;
     top: 0;
