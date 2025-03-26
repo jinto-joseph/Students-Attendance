@@ -3,7 +3,8 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     transition: all 0.3s ease;
-    touch-action: manipulation; /* Improves touch responsiveness */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent; /* Added for better mobile touch */
 }
 
 h1, h2 {
@@ -27,76 +28,69 @@ h1, h2 {
     overflow: visible;
 }
 
-/* Mobile-friendly hover/active state */
-@media (hover: hover) {
-    .student-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        z-index: 10;
-    }
-}
-.student-card:active {
+/* Enhanced touch/hover states with smooth transitions */
+.student-card:hover,
+.student-card:active,
+.student-card.touched {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
 
-/* Enhanced Photo Zoom Effect - Perfect Circle */
+/* Perfect Circular Zoom with Enhanced Animation */
 .student-photo {
     width: 50px;
     height: 50px;
     object-fit: cover;
     border: 2px solid #007bff;
     border-radius: 50%;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smoother animation */
     transform-origin: left center;
     will-change: transform;
     position: relative;
     z-index: 1;
+    -webkit-backface-visibility: hidden; /* Prevent flickering */
+    backface-visibility: hidden;
 }
 
-/* Mobile-friendly zoom effect */
-@media (hover: hover) {
-    .student-card:hover .student-photo {
-        transform: scale(3);
-        border-color: #0056b3;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        z-index: 20;
-        margin-right: 60px;
-    }
-}
-.student-card:active .student-photo {
-    transform: scale(3);
+/* Zoom Effect for all interaction types */
+.student-card:hover .student-photo,
+.student-card:active .student-photo,
+.student-card.touched .student-photo {
+    transform: scale(3) translateZ(0); /* Added translateZ for hardware acceleration */
     border-color: #0056b3;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
     z-index: 20;
     margin-right: 60px;
 }
 
-/* Adjust text and checkbox positioning */
+/* Card Body Layout Enhancements */
 .student-card .card-body {
     position: relative;
     overflow: visible;
     z-index: 2;
     display: flex;
     align-items: center;
+    padding: 12px; /* Slightly more padding */
 }
 
 .student-card .flex-grow-1 {
-    margin-left: 10px;
+    margin-left: 12px; /* Slightly more spacing */
     z-index: 2;
     position: relative;
     min-width: 0;
+    transition: margin-left 0.3s ease; /* Smooth text movement */
 }
 
-/* Prevent checkbox from being overlapped */
+/* Checkbox Styling Enhancement */
 .form-check.custom-checkbox {
     z-index: 3;
     position: relative;
     margin-left: auto;
+    padding-right: 8px; /* Added padding */
 }
 
-/* Dark Theme Adjustments */
+/* Dark Theme Adjustments (unchanged) */
 [data-bs-theme="dark"] body {
     background-color: #212529;
     color: #f8f9fa;
@@ -124,26 +118,31 @@ h1, h2 {
 }
 
 [data-bs-theme="dark"] .student-card:hover .student-photo,
-[data-bs-theme="dark"] .student-card:active .student-photo {
+[data-bs-theme="dark"] .student-card:active .student-photo,
+[data-bs-theme="dark"] .student-card.touched .student-photo {
     border-color: #1557b0;
 }
 
-/* Submit Button */
+/* Submit Button Enhancements */
 .submit-btn {
     background-color: #007bff;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 24px; /* Slightly larger */
     font-weight: 500;
-    transition: background-color 0.3s ease;
-    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    border-radius: 8px; /* More rounded */
+    font-size: 1rem;
 }
 
 .submit-btn:hover,
 .submit-btn:active {
     background-color: #0056b3;
+    transform: translateY(-2px); /* Subtle lift */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Password Overlay */
+/* Password Overlay Enhancements */
 .password-overlay {
     position: fixed;
     top: 0;
@@ -155,73 +154,70 @@ h1, h2 {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    backdrop-filter: blur(3px); /* Added blur effect */
 }
 
 .password-container {
     background-color: #fff;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 123, 0.1);
+    border-radius: 12px; /* More rounded */
+    box-shadow: 0 8px 16px rgba(0, 0, 123, 0.15); /* Enhanced shadow */
     width: 100%;
     max-width: 400px;
     text-align: center;
+    transform: scale(0.95); /* Initial scale for animation */
+    animation: fadeInUp 0.3s ease forwards;
 }
 
-.password-container h2 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #007bff;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
-.password-input {
-    font-size: 18px;
-    padding: 10px;
-    border: 2px solid #007bff;
-    border-radius: 5px;
-    transition: border-color 0.3s ease;
-    -webkit-appearance: none; /* Remove iOS styling */
-}
-
-.password-input:focus {
-    border-color: #0056b3;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.btn-primary {
-    background-color: #007bff;
-    border: none;
-    padding: 10px 20px;
-    font-weight: 500;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover,
-.btn-primary:active {
-    background-color: #0056b3;
-}
-
-.text-danger {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* Mobile-specific adjustments */
+/* Mobile-specific adjustments with better touch support */
 @media (max-width: 768px) {
     .student-photo {
-        width: 45px;
-        height: 45px;
+        width: 48px;
+        height: 48px;
     }
     
-    .student-card:active .student-photo {
-        transform: scale(2.5);
-        margin-right: 50px;
+    .student-card:active .student-photo,
+    .student-card.touched .student-photo {
+        transform: scale(2.8) translateZ(0);
+        margin-right: 55px;
     }
     
-    @media (hover: hover) {
-        .student-card:hover .student-photo {
-            transform: scale(2.5);
-            margin-right: 50px;
-        }
+    .student-card .card-body {
+        padding: 10px;
+    }
+    
+    .submit-btn {
+        padding: 14px 20px;
+        width: 100%;
+    }
+    
+    .password-container {
+        padding: 25px;
+        margin: 20px;
+    }
+}
+
+/* Very small devices */
+@media (max-width: 480px) {
+    .student-photo {
+        width: 44px;
+        height: 44px;
+    }
+    
+    .student-card:active .student-photo,
+    .student-card.touched .student-photo {
+        transform: scale(2.5) translateZ(0);
+        margin-right: 45px;
     }
 }
