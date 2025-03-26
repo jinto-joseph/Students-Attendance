@@ -3,6 +3,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background-color: #f8f9fa;
     transition: all 0.3s ease;
+    touch-action: manipulation; /* Improves touch responsiveness */
 }
 
 h1, h2 {
@@ -26,7 +27,15 @@ h1, h2 {
     overflow: visible;
 }
 
-.student-card:hover {
+/* Mobile-friendly hover/active state */
+@media (hover: hover) {
+    .student-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+    }
+}
+.student-card:active {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     z-index: 10;
@@ -46,13 +55,22 @@ h1, h2 {
     z-index: 1;
 }
 
-.student-card:hover .student-photo {
+/* Mobile-friendly zoom effect */
+@media (hover: hover) {
+    .student-card:hover .student-photo {
+        transform: scale(3);
+        border-color: #0056b3;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 20;
+        margin-right: 60px;
+    }
+}
+.student-card:active .student-photo {
     transform: scale(3);
     border-color: #0056b3;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     z-index: 20;
     margin-right: 60px;
-    border-radius: 50%; /* Ensures perfect circle when zoomed */
 }
 
 /* Adjust text and checkbox positioning */
@@ -105,7 +123,8 @@ h1, h2 {
     border-color: #1a73e8;
 }
 
-[data-bs-theme="dark"] .student-card:hover .student-photo {
+[data-bs-theme="dark"] .student-card:hover .student-photo,
+[data-bs-theme="dark"] .student-card:active .student-photo {
     border-color: #1557b0;
 }
 
@@ -116,9 +135,11 @@ h1, h2 {
     padding: 10px 20px;
     font-weight: 500;
     transition: background-color 0.3s ease;
+    -webkit-tap-highlight-color: transparent; /* Remove mobile tap highlight */
 }
 
-.submit-btn:hover {
+.submit-btn:hover,
+.submit-btn:active {
     background-color: #0056b3;
 }
 
@@ -158,6 +179,7 @@ h1, h2 {
     border: 2px solid #007bff;
     border-radius: 5px;
     transition: border-color 0.3s ease;
+    -webkit-appearance: none; /* Remove iOS styling */
 }
 
 .password-input:focus {
@@ -174,11 +196,32 @@ h1, h2 {
     transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:active {
     background-color: #0056b3;
 }
 
 .text-danger {
     font-size: 14px;
     margin-top: 10px;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    .student-photo {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .student-card:active .student-photo {
+        transform: scale(2.5);
+        margin-right: 50px;
+    }
+    
+    @media (hover: hover) {
+        .student-card:hover .student-photo {
+            transform: scale(2.5);
+            margin-right: 50px;
+        }
+    }
 }
