@@ -18,12 +18,12 @@ A simple web application to manage student check-ins, built with HTML, CSS, and 
 
 ### 1️⃣ Clone the repository
 ```bash
-git clone https://github.com/jinto-joseph/students-app.git
+git clone https://github.com/jinto-joseph/Students-Attendance.git
 ```
 
 ### 2️⃣ Navigate to the project folder
 ```bash
-cd students-app
+cd Students-Attendance
 ```
 
 ### 3️⃣ Start a local server
