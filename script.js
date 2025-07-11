@@ -70,8 +70,8 @@ function submitAttendance() {
                         border-bottom: 1px solid #eee;
                     }
                     .print-student img {
-                        width: 500px;
-                        height: 500px;
+                        width: 100px;
+                        height: 100px;
                         border-radius: 50%;
                         margin-right: 15px;
                         object-fit: cover;
