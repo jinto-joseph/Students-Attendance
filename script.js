@@ -114,6 +114,20 @@ function submitAttendance() {
         // Wait for the print window to fully render before printing
         printWindow.onload = () => {
             printWindow.print();
+            // Save as file after print
+            const now = new Date();
+            const pad = n => n.toString().padStart(2, '0');
+            const dateStr = `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())}`;
+            const timeStr = `${pad(now.getHours())}-${pad(now.getMinutes())}-${pad(now.getSeconds())}`;
+            const filename = `students attendance - ${dateStr} ${timeStr}.html`;
+            // Create a blob and trigger download
+            const blob = new Blob([printContent], {type: 'text/html'});
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         };
     }).catch(err => {
         console.error("Error preloading images:", err);
