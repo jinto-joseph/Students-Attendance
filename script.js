@@ -27,7 +27,7 @@ function submitAttendance() {
                 img.onload = () => {
                     // Compress image using canvas
                     const canvas = document.createElement('canvas');
-                    const size = 200; // Increased target size (width/height)
+                    const size = 100; // Increased target size (width/height)
                     canvas.width = size;
                     canvas.height = size;
                     const ctx = canvas.getContext('2d');
@@ -70,8 +70,8 @@ function submitAttendance() {
                         border-bottom: 1px solid #eee;
                     }
                     .print-student img {
-                        width: 200px;
-                        height: 200px;
+                        width: 100px;
+                        height: 100px;
                         border-radius: 50%;
                         margin-right: 15px;
                         object-fit: cover;
