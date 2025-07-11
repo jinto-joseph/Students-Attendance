@@ -106,3 +106,19 @@ function submitAttendance() {
         alert("Failed to load some images. Please try again.");
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Make student card body clickable to toggle attendance
+    document.querySelectorAll('.student-card .card-body').forEach(function(cardBody) {
+        cardBody.addEventListener('click', function(e) {
+            // Prevent toggling if the actual checkbox was clicked
+            if (e.target.classList.contains('attendance')) return;
+            const checkbox = cardBody.querySelector('.attendance');
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                // Optionally, trigger change event if you have listeners
+                checkbox.dispatchEvent(new Event('change'));
+            }
+        });
+    });
+});
