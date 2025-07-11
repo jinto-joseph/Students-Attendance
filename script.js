@@ -13,16 +13,30 @@ function submitAttendance() {
     // Hardcoded GitHub Pages base URL
     const baseUrl = 'https://jinto-joseph.github.io/Students-Attendance/';
 
-    // Preload images to ensure they are available for printing
+    // Preload and compress images
     const imagePromises = [];
+    const compressedImages = {};
     selectedStudents.forEach(student => {
         const imgSrc = student.getAttribute('data-img');
         const fullImgSrc = `${baseUrl}${imgSrc}`;
         const img = new Image();
+        img.crossOrigin = 'Anonymous';
         img.src = fullImgSrc;
         imagePromises.push(
             new Promise((resolve, reject) => {
-                img.onload = resolve;
+                img.onload = () => {
+                    // Compress image using canvas
+                    const canvas = document.createElement('canvas');
+                    const size = 60; // Target size (width/height)
+                    canvas.width = size;
+                    canvas.height = size;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, size, size);
+                    // Use JPEG compression, quality 0.6
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+                    compressedImages[imgSrc] = dataUrl;
+                    resolve();
+                };
                 img.onerror = () => {
                     console.error(`Failed to load image: ${fullImgSrc}`);
                     resolve(); // Resolve even on error to continue
@@ -31,7 +45,7 @@ function submitAttendance() {
         );
     });
 
-    // Wait for all images to load before generating the print content
+    // Wait for all images to load and compress before generating the print content
     Promise.all(imagePromises).then(() => {
         let printContent = `
             <html>
@@ -82,10 +96,10 @@ function submitAttendance() {
             const name = student.getAttribute('data-name');
             const reg = student.getAttribute('data-reg');
             const imgSrc = student.getAttribute('data-img');
-            const fullImgSrc = `${baseUrl}${imgSrc}`;
+            const compressedSrc = compressedImages[imgSrc] || '';
             printContent += `
                 <div class="print-student">
-                    <img src="${fullImgSrc}" alt="${name}">
+                    <img src="${compressedSrc}" alt="${name}">
                     <p>${name} (Reg: ${reg})</p>
                 </div>
             `;
