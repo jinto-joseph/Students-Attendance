@@ -1,4 +1,4 @@
-const CACHE_NAME = 'students-app-v2';
+const CACHE_NAME = 'students-app-v3';
 const FILES_TO_CACHE = [
     '/Students-Attendance/index.html',
     '/Students-Attendance/style.css',
@@ -6,6 +6,7 @@ const FILES_TO_CACHE = [
     '/Students-Attendance/manifest.json',
     '/Students-Attendance/sw.js',
     '/Students-Attendance/Pics/icon.png',  // App icon for PWA install
+    '/Students-Attendance/Pics/URK24CS1002.jpeg',
     '/Students-Attendance/Pics/URK24CS1207.jpeg',
     '/Students-Attendance/Pics/URK24CS1208.jpg',
     '/Students-Attendance/Pics/URK24CS1209.JPG',
@@ -13,6 +14,7 @@ const FILES_TO_CACHE = [
     '/Students-Attendance/Pics/URK24CS1211.jpg',
     '/Students-Attendance/Pics/URK24CS1212.jpg',
     '/Students-Attendance/Pics/URK24CS1213.jpg',
+    '/Students-Attendance/Pics/URK24CS1213%20.jpg',
     '/Students-Attendance/Pics/URK24CS1214.jpeg',
     '/Students-Attendance/Pics/URK24CS1215.jpg',
     '/Students-Attendance/Pics/URK24CS1216.jpg',
@@ -20,8 +22,10 @@ const FILES_TO_CACHE = [
     '/Students-Attendance/Pics/URK24CS1221.jpg',
     '/Students-Attendance/Pics/URK24CS1223.jpeg',
     '/Students-Attendance/Pics/URK24CS1225.jpg',
+    '/Students-Attendance/Pics/URK24CS1225%20.jpg',
     '/Students-Attendance/Pics/URK24CS1226.jpg',
     '/Students-Attendance/Pics/URK24CS1228.jpg',
+    '/Students-Attendance/Pics/URK24CS1228%20.jpg',
     '/Students-Attendance/Pics/URK24CS1229.jpeg',
     '/Students-Attendance/Pics/URK24CS1230.jpg',
     '/Students-Attendance/Pics/URK24CS1231.jpg',
