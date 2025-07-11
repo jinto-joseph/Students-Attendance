@@ -27,13 +27,13 @@ function submitAttendance() {
                 img.onload = () => {
                     // Compress image using canvas
                     const canvas = document.createElement('canvas');
-                    const size = 60; // Target size (width/height)
+                    const size = 200; // Increased target size (width/height)
                     canvas.width = size;
                     canvas.height = size;
                     const ctx = canvas.getContext('2d');
                     ctx.drawImage(img, 0, 0, size, size);
-                    // Use JPEG compression, quality 0.6
-                    const dataUrl = canvas.toDataURL('image/jpeg', 0.6);
+                    // Use JPEG compression, higher quality 0.85
+                    const dataUrl = canvas.toDataURL('image/jpeg', 0.99);
                     compressedImages[imgSrc] = dataUrl;
                     resolve();
                 };
@@ -70,8 +70,8 @@ function submitAttendance() {
                         border-bottom: 1px solid #eee;
                     }
                     .print-student img {
-                        width: 60px;
-                        height: 60px;
+                        width: 200px;
+                        height: 200px;
                         border-radius: 50%;
                         margin-right: 15px;
                         object-fit: cover;
